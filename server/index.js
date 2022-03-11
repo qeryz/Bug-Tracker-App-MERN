@@ -18,11 +18,14 @@ app.use(cors());
 app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
 
+app.get('/', (req,res) => {
+    res.send('BACKEND DEPLOYED');
+});
+
 
 const CONNECTION_URL = process.env.CONNECTION_URL;
 // const CONNECTION_URL = 'mongodb+srv://qeryz:Chata123@cluster0.hrf5d.mongodb.net/newDatabase?retryWrites=true&w=majority';
-// const PORT = process.env.PORT || 5000;
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
