@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:5000' });
-// const url = 'http://localhost:5000/posts';
-// const url = 'https://qeryz-mern-app-1.herokuapp.com/posts';
+const API = axios.create({ baseURL: 'https://bug-tracker-app-mern.herokuapp.com/' });
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('profile')) {
