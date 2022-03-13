@@ -30,8 +30,8 @@ const CommentSection = ({ post }) => {
         const finalComment = `${user?.result?.name}: ${comment}`;
         const newComments = await dispatch(commentPost(finalComment, post._id));
 
-        setComments(newComments);
         setComment('');
+        setComments(newComments);
 
         commentsRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     };
@@ -42,8 +42,8 @@ const CommentSection = ({ post }) => {
         <Divider />
         <div className={classes.commentsOuterContainer}>
             <div className={classes.commentsInnerContainer}>
-                {comments.length > 0 ? (
-                    comments.map((c, i) => (
+                {comments?.length > 0 ? (
+                    comments?.map((c, i) => (
                     <Typography key={i} gutterBottom variant='subtitle1'>
                         <Stack direction='row' spacing={2}>
                             <Avatar style={{ width: '32px', height: '32px', margin: '4px', marginTop: '14px' }}>{c.charAt(0)}</Avatar>
@@ -54,8 +54,7 @@ const CommentSection = ({ post }) => {
                                         <Typography variant='caption'><Box style={{ color: 'black' }}>{c.split(':')[0]}</Box></Typography>
                                         <Typography gutterBottom variant='caption'><Box style={{ color: '#5e5e5e' }}>{c.split(':')[1]}</Box></Typography>
                                     </div>
-                                }
-                                variant='outlined'                            
+                                }                          
                             />
                         </Stack>                        
                     </Typography>

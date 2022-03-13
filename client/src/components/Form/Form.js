@@ -99,8 +99,8 @@ const Form = ({ currentId, setCurrentId}) => {
                     </FormControl>
                 </Box>    
 
-                <div className={classes.fileInput}> <FileBase type ='file' multiple={false} onDone={({base64}) => setPostData({ ...postData, selectedFile: base64})} /> 
-                <Button disabled={!postData.selectedFile} style= {{minWidth: '35%'}} variant='outlined' color='secondary' size='small' onClick={clearImage} >Clear Image</Button></div>
+                <div className={classes.fileInput}> <FileBase type ='file' multiple={false} onDone={({base64}) => setPostData({ ...postData, selectedFile: base64})} /> </div>
+                <div className={classes.fileInput}> <Button disabled={!postData.selectedFile} style= {{minWidth: '35%'}} variant='outlined' color='secondary' size='small' onClick={clearImage} >Clear Image</Button> </div>
                 <Button disabled={(!postData.title) || (!postData.message) || (!postData.priority) || (!postData.status) } className={classes.buttonSubmit} 
                 variant='contained' color='primary' size='large' type='submit' endIcon={<SendIcon />} fullWidth >{currentId ? 'Submit Edit' : 'Submit'}</Button>
                 <Button disabled={(!postData.title) && (!postData.message) && (!postData.tags)} variant='contained' color='secondary' 

@@ -17,9 +17,13 @@ export default makeStyles((theme) => ({
   },
   fileInput: {
     width: '95%',
-    margin: '15px 0px ',
+    margin: '10px 0px 10px 0px',
     display:'flex',
-    justifyContent: 'left',
+    justifyContent: 'space-between',
+  },
+  [theme.breakpoints.down('sm')]: {
+    display:'flex',
+    flexDirection: 'column',
   },
   priority: {
     width: '40%',
