@@ -18,7 +18,7 @@ const Home = () => {
     const classes = useStyles();
     const [currentId, setCurrentId] = useState(null);
     const dispatch = useDispatch();
-    const user = JSON.parse(localStorage.getItem('profile'));    
+    const user = JSON.parse(localStorage.getItem('profile'));
     const navigate = useNavigate();
     const query = useQuery();
     const page =  query.get('page') || 1;
@@ -54,68 +54,75 @@ const Home = () => {
     // console.log(tags);
 
     return (
-        <div>
+        <div style={{ marginTop: '5rem'}}>
+            {(!searchQuery && !tags.length) && (
+                <Paper position='sticky' className={classes.pagination} elevation={6}>
+                    <Pagination page={page} />
+                </Paper>
+            )}
             <Grow in>
-                <Container maxWidth='xl'>
+                <Container className={classes.homeContainer} maxWidth='xl'>
                     <Grid container justifyContent='space-between' alignItems='stretch' spacing={8} className={classes.gridContainer}>
+                        
                         <Grid item xs={12} sm={6} md={8}>
                             <Posts setCurrentId={setCurrentId} />
                         </Grid>
                         <Grid item xs={12} sm={6} md={4} xl={3}>
-                        {(!searchQuery && !tags.length) && (
-                            <Paper className={classes.pagination} elevation={6}>
-                                <Pagination page={page} />
-                            </Paper>
-                        )}
-                        <AppBar className={classes.appBarSearch} position='static' color='inherit'>
-                            <TextField name='search' type='search' variant='outlined' label='Search Keywords' fullWidth value={search} onKeyPress={handleKeyPress} 
-                            onChange={(e, reason) => {
-                                setSearch(e.target.value)
-                                if (e.target.value === '')
-                                    navigate(-1);
-                            }} 
-                            />
-                            <Autocomplete
-                                multiple
-                                options={[]}
-                                freeSolo
-                                value={tags}
-                                onChange={(e, newval, reason) => {
-                                    if (!/\s/.test(e.target.value)) // if tag contains no spaces, set tag
-                                        setTags(newval);
-
-                                    if (reason === 'clear')
-                                        navigate(-1);
-
-                                }}
-                                renderInput={(params) => (
-                                <TextField
-                                    {...params}
-                                    style={{ margin: '10px 0'}}
-                                    variant='outlined'
-                                    label='Search Project Tags'
-                                    onKeyDown={e => {
-                                        if (e.key === ' ' && !tags.includes(e.target.value)) {
-                                            if (!/\s/.test(e.target.value)){
-                                                setTags(tags.concat(e.target.value));
-                                            }
-                                        }
-                                      }}
-                                />
+                            {/* <Hidden smUp>
+                                {(!searchQuery && !tags.length) && (
+                                    <Paper className={classes.pagination} elevation={6}>
+                                        <Pagination page={page} />
+                                    </Paper>
                                 )}
-                            />
-                            <Button onClick={searchPost} className={classes.searchButton} variant='contained' color='primary'>Search</Button>
-                        </AppBar>
-                        <Form currentId = {currentId} setCurrentId={setCurrentId} />
-                        {(!searchQuery && !tags.length) && (
-                            <Paper className={classes.pagination} elevation={6}>
-                                <Pagination page={page} />
-                            </Paper>
-                        )}
+                            </Hidden> */}
+                            <AppBar className={classes.appBarSearch} align='center' position='static' color='inherit'>
+                                <Typography align='center' gutterBottom variant='h6'>Search Posts</Typography>
+                                <TextField name='search' type='search' variant='outlined' label='Search Keywords' fullWidth value={search} onKeyPress={handleKeyPress} 
+                                onChange={(e, reason) => {
+                                    setSearch(e.target.value)
+                                    if (e.target.value === '')
+                                        navigate(-1);
+                                }} 
+                                />
+                                <Autocomplete
+                                    multiple
+                                    options={[]}
+                                    freeSolo
+                                    value={tags}
+                                    onChange={(e, newval, reason) => {
+                                        if (!/\s/.test(e.target.value)) // if tag contains no spaces, set tag
+                                            setTags(newval);
+                                        if (reason === 'clear')
+                                            navigate(-1);
+                                    }}
+                                    renderInput={(params) => (
+                                        <TextField
+                                        {...params}
+                                        style={{ margin: '10px 0'}}
+                                        variant='outlined'
+                                        label='Search Project Tags'
+                                        onKeyDown={e => {
+                                            if (e.key === ' ' && !tags.includes(e.target.value)) {
+                                                if (!/\s/.test(e.target.value)){
+                                                    setTags(tags.concat(e.target.value));
+                                                }
+                                            }
+                                        }}
+                                        />
+                                    )}
+                                />
+                                <Button onClick={searchPost} className={classes.searchButton} variant='contained' color='primary'>Search</Button>
+                            </AppBar>
+                            <Form currentId = {currentId} setCurrentId={setCurrentId} />
                         </Grid>
                     </Grid>
                 </Container>
             </Grow>
+            {(!searchQuery && !tags.length) && (
+                <Paper className={classes.pagination} elevation={6}>
+                    <Pagination page={page} />
+                </Paper>
+            )}
         </div>
     )
 }

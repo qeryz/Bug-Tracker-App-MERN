@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardActions, CardContent, Button, Typography, CardActionArea, Chip, Dialog, DialogTitle, DialogActions } from '@material-ui/core';
+import { Card, CardActions, CardContent, Button, Typography, CardActionArea, Chip, Dialog, DialogTitle, DialogActions, Hidden } from '@material-ui/core';
 import Stack from '@mui/material/Stack';
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -92,14 +92,17 @@ const Post = ({ post, setCurrentId }) => {
                         />
                     </Stack>
                     <Stack direction='row' spacing={1} justifyContent='flex-end'>
-                        <Typography variant='caption' color='textSecondary'>{`Reported:  ${moment(post.createdAt).fromNow()} `}</Typography>
-                        
+                        <Typography variant='caption' color='textSecondary'>
+                            <Hidden mdDown>
+                                {`Reported:  ${moment(post.createdAt).fromNow()} `}
+                            </Hidden>
+                        </Typography>
                     </Stack>
                     <Stack direction='row' justifyContent='flex-end'>
                         <AttachmentIcon color='action' />
                     </Stack>
-                    
-                </div>) : (
+                </div>
+                ) : (
                 <div className={classes.overlay3}>
                     <Stack direction='row' spacing={1} justifyContent='flex-end'>
                         <Chip
@@ -109,7 +112,11 @@ const Post = ({ post, setCurrentId }) => {
                         />
                     </Stack>
                     <Stack direction='row' spacing={1} justifyContent='flex-end'>
-                        <Typography variant='caption' color='textSecondary'>{`Reported:  ${moment(post.createdAt).fromNow()} `}</Typography>
+                        <Typography variant='caption' color='textSecondary'>
+                            <Hidden mdDown>
+                                {`Reported:  ${moment(post.createdAt).fromNow()} `}
+                            </Hidden>
+                        </Typography>
                     </Stack>
                 </div>) }
 
@@ -129,7 +136,7 @@ const Post = ({ post, setCurrentId }) => {
                 <Typography className={classes.title} variant= 'h5'>{post.title[0].toUpperCase() + post.title.substring(1) }</Typography>
 
                 <CardContent>
-                    <Typography variant= 'body2' color='textSecondary' component='p'>{post.message[0].toUpperCase() + post.message.substring(1) }</Typography>
+                    <Typography variant= 'body2' color='textSecondary' component='p'>{post.message.length > 190 ? `${post.message.substring(0,190)}...` : post.message }</Typography>
                 </CardContent>
 
             </CardActionArea>

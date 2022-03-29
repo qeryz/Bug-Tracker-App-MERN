@@ -51,7 +51,7 @@ export default makeStyles((theme) => ({
     height: '100%',
   },
   card: {
-    backgroundColor: '#f7f8fc',
+    backgroundColor: '#f7f8fa',
     display: 'absolute',
     flexDirection: 'column',
     justifyContent: 'space-between',

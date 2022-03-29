@@ -47,7 +47,7 @@ const CommentSection = ({ post }) => {
                     <Typography key={i} gutterBottom variant='subtitle1'>
                         <Stack direction='row' spacing={2}>
                             <Avatar style={{ width: '32px', height: '32px', margin: '4px', marginTop: '14px' }}>{c.charAt(0)}</Avatar>
-                            <Chip variant='filled'
+                            <Chip variant='default'
                                 style={{ padding: '25px', paddingLeft: '4px', paddingRight: '4px', margin: '2px', marginTop: '5px', color: 'black', borderColor: '#f0f2f5', backgroundColor: '#f0f2f5'}}
                                 label={
                                     <div>

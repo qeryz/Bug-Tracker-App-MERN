@@ -2,6 +2,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 export default makeStyles((theme) => ({
+  postContainer: {
+    width: '100%',
+    paddingTop: '5.1rem',
+  },
   media: {
     borderRadius: '10px',
     objectFit: 'cover',
@@ -36,7 +40,7 @@ export default makeStyles((theme) => ({
     display: 'flex', 
     justifyContent: 'center', 
     alignItems: 'center', 
-    padding: '20px', 
+    padding: '160px', 
     borderRadius: '15px', 
     height: '39vh',
   },
@@ -49,6 +53,7 @@ export default makeStyles((theme) => ({
     },
   },
   commentsInnerContainer: {
+    marginTop: '0.5rem',
     height: '250px',
     width: '100%',
     overflowY: 'auto',
@@ -56,5 +61,42 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       width: '100%',
     },
+  },
+  greenOutline: {
+    borderColor: '#66bb6a',
+    color: '#66bb6a',
+  },
+  redOutline: {
+    borderColor: '#f44336',
+    color: '#f44336',
+  },
+  orangeOutline: {
+    borderColor: '#ffa726',
+    color: '#ffa726',
+  },
+  redFilled: {
+    borderColor: '#d32f2f',
+    backgroundColor: '#d32f2f',
+    color: '#f7f8fc',
+  },
+  orangeFilled: {
+    borderColor: '#ffa726',
+    backgroundColor: '#ffa726',
+    color: '#f7f8fc',
+  },
+  greenFilled: {
+    borderColor: '#66bb6a',
+    backgroundColor: '#66bb6a',
+    color: '#f7f8fc',
+  },
+  blueFilled: {
+    borderColor: '#29b6f6',
+    backgroundColor: '#29b6f6',
+    color: '#f7f8fc',
+  },
+  lightBlueFilled: {
+    borderColor: '#90caf9',
+    backgroundColor: '#90caf9',
+    color: '#f7f8fc',
   },
 }));

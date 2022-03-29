@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({ baseURL: 'https://bug-tracker-app-mern.herokuapp.com/' });
+// const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('profile')) {
@@ -12,6 +13,7 @@ API.interceptors.request.use((req) => {
 
 export const fetchPost = (id) => API.get(`/posts/${id}`);
 export const fetchPosts = (page) => API.get(`/posts?page=${page}`);
+export const fetchPostsByCreator = (name) => API.get(`/posts/creator?creator=${name}&name=${name}`);
 export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);
 export const createPost = (newPost) => API.post('/posts', newPost);
 export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost);

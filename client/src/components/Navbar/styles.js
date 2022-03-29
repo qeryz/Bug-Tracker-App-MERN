@@ -4,23 +4,23 @@ import { deepPurple } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
   appBar: {
+    width: '100%',
     backgroundColor: '#031d2e',
-    borderRadius: 15,
-    margin: '25px 0',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '15px 50px',
+    padding: '1px 30px',
     [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column',
+      flexDirection: 'row',
+      padding: '4px 20px',
     },
   },
   heading: {
     color: 'white',
     textDecoration: 'none',
     fontFamily:'Trebuchet MS',
-    fontSize: '2em',
+    fontSize: '1.9em',
     fontWeight:'400',
   },
   subheading: {
@@ -32,7 +32,7 @@ export default makeStyles((theme) => ({
   },
   image: {
     color:'#c6282e',
-    fontSize: 50,
+    fontSize: 43,
     marginLeft: '5px',
   },
   subimage: {
@@ -43,9 +43,9 @@ export default makeStyles((theme) => ({
   toolbar: {
     display: 'flex',
     justifyContent: 'flex-end',
-    width: '400px',
-    [theme.breakpoints.down('sm')]: {
-      width: 'auto',
+    width: '1400px',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
     },
   },
   profile: {
@@ -62,11 +62,39 @@ export default makeStyles((theme) => ({
     color: 'white',
     display: 'flex',
     alignItems: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
+    textDecoration: 'none',
+    transition: 'ease 0.2s',
+  },
+  navbarItems: {
+    color: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    textAlign: 'center',
+    textDecoration: 'none',
+    transition: 'ease 0.1s',
+
+    '&:hover': {
+      transform: 'scale(1.07)',
+      color:'#dd2767',
+    }
+  },
+  logout: {
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: '8px',
+      paddingRight: '8px',
+      minHeight: 0,
+      minWidth: 0,
+    },
   },
   brandContainer: {
     display: 'flex',
     alignItems: 'center',
+    transition: 'ease 0.1s',
+    '&:hover': {
+      transform: 'scale(1.04)',
+    }
+    
   },
   purple: {
     color: theme.palette.getContrastText(deepPurple[500]),
