@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Typography, CircularProgress, Grid, Divider } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,11 +9,16 @@ import { getPostsByCreator, getPostsBySearch } from '../../actions/posts';
 const UserPosts = () => {
   const { name } = useParams();
   const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem('profile'));
+  const navigate = useNavigate();
   const { posts, isLoading } = useSelector((state) => state.posts);
 
   const location = useLocation();
 
   useEffect(() => {
+    if (!user?.result?.name) { // If user is not authenticated, redirect to login page
+      navigate('/auth');
+    }
     if (location.pathname.startsWith('/tags')) {
         dispatch(getPostsBySearch({ tags: name }));
     } 

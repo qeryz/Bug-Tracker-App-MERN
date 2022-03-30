@@ -68,13 +68,6 @@ const Home = () => {
                             <Posts setCurrentId={setCurrentId} />
                         </Grid>
                         <Grid item xs={12} sm={6} md={4} xl={3}>
-                            {/* <Hidden smUp>
-                                {(!searchQuery && !tags.length) && (
-                                    <Paper className={classes.pagination} elevation={6}>
-                                        <Pagination page={page} />
-                                    </Paper>
-                                )}
-                            </Hidden> */}
                             <AppBar className={classes.appBarSearch} align='center' position='static' color='inherit'>
                                 <Typography align='center' gutterBottom variant='h6'>Search Posts</Typography>
                                 <TextField name='search' type='search' variant='outlined' label='Search Keywords' fullWidth value={search} onKeyPress={handleKeyPress} 
